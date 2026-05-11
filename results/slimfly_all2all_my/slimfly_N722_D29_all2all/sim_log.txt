@@ -1,0 +1,40 @@
+----------------------------------------------------------------
+Run: slimfly_N722_D29
+Traffic: TRAFFIC_MODE=1 (all-to-all if =1), packets_per_pair=1000
+Note: ppp=1000 and traffic_num=1000 are ignored in all-to-all mode (kept for CLI compatibility).
+Routing: ROUTE_LUT_MODE=1, PATH_DIVERSITY=1, LOAD_BALANCE=2
+Tree-turn: ROOT_SELECT=2 (0=fixed,1=random,2=optimal)
+Seed: 0
+Outputs: pathlog=results/slimfly_all2all_my/slimfly_N722_D29_all2all/pathlog.txt, summary_lut=results/slimfly_all2all_my/slimfly_N722_D29_all2all/summary_lut.txt
+Command: ./bin/main temp/slimfly_N722_D29.txt 1 1 0 1000 1000 2 1 2 results/slimfly_all2all_my/slimfly_N722_D29_all2all/pathlog.txt results/slimfly_all2all_my/slimfly_N722_D29_all2all/summary_lut.txt 1000
+----------------------------------------------------------------
+
+--------------------- Start of Rounte_Sim_Anytopo -------------------------
+**** Graph name is : temp/slimfly_N722_D29.txt
+**** Traffic Mode is : 1
+     seed = 0; ppp = 1000/10000; packet_num = 1000
+     traffic LUT file name is: (n/a)
+**** Route Lut Mode is : 1
+**** Root selection mode is : 2
+**** Path Diversity mode is : 1
+**** Load Balance mode is : 2
+**** Num of VC is : 3
+**** Num of LUT is : 3
+**** Depth of Channel is : 3
+**** Path-log file name is : results/slimfly_all2all_my/slimfly_N722_D29_all2all/pathlog.txt
+----- start construct Graph AdjList from file, num_nodes = 722, degree = 29 -----
+Total Packets : 520562000
+	 best root is : 379	 best root is : 17	 best root is : 678
+False dist rate is 0.435009
+False dist rate is 0.418529
+False dist rate is 0.433017
+--------------------- End of LUT INIT -------------------------
+Start ...
+Total cycle : 5336987
+Throughput : 97.538555 packets/cycle
+End ...
+Using time = 38081.626039 s
+**** Sim Done !
+Avg Packet Delivery Latency is : 420.097652
+Max Packet Delivery Latency is : 4382053
+temp/slimfly_N722_D29.txt

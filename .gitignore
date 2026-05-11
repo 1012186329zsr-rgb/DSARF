@@ -1,0 +1,47 @@
+temp/
+build/
+bin/
+obj/
+
+# C/C++ and CMake artifacts
+*.o
+*.a
+*.so
+*.dylib
+*.dll
+*.exe
+CMakeCache.txt
+cmake_install.cmake
+compile_commands.json
+
+# Python cache artifacts
+__pycache__/
+*.pyc
+
+# Logs and archives
+*.log
+nohup.out
+topology_*.zip
+*.tar.gz
+
+# Editor and OS noise
+.DS_Store
+Thumbs.db
+.vscode/
+
+# Runtime/generated files (keep curated result summaries explicitly)
+results/**/pathlog*.txt
+results/**/traffic*.csv
+results/**/heatmap*.png
+
+# Build outputs and logs (but keep source files)
+make_output.txt
+
+# Large data directories - add data files selectively if needed
+results/*.txt
+results/*.csv
+results/*.png
+results/*.json
+
+# Third-party code (consider using git submodules instead)
+opensm-master/

@@ -1,0 +1,28 @@
+
+--------------------- Start of Rounte_Sim_Anytopo -------------------------
+**** Graph name is : temp/slimfly_N1922_D47.txt
+**** Traffic Mode is : 0
+     seed = 0; ppp = 1000/10000; packet_num = 1000
+     traffic LUT file name is: results/slimfly_suite/slimfly_N1922_D47_treeturn_nonmin/summary_lut.txt
+**** Route Lut Mode is : 1
+**** Root selection mode is : 2
+**** Path Diversity mode is : 1
+**** Load Balance mode is : 2
+**** Num of VC is : 3
+**** Num of LUT is : 3
+**** Depth of Channel is : 3
+**** Path-log file name is : results/slimfly_suite/slimfly_N1922_D47_treeturn_nonmin/pathlog.txt
+----- start construct Graph AdjList from file, num_nodes = 1922, degree = 47 -----
+	 best root is : 1724	 best root is : 1760	 best root is : 233
+False dist rate is 0.482042
+False dist rate is 0.511811
+False dist rate is 0.466000
+--------------------- End of LUT INIT -------------------------
+Start ...
+Total cycle : 3044924
+End ...
+Using time = 144556.392202 s
+**** Sim Done !
+Avg Packet Delivery Latency is : 744.042287
+Max Packet Delivery Latency is : 2634915
+temp/slimfly_N1922_D47.txt

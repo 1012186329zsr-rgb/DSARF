@@ -1,0 +1,40 @@
+----------------------------------------------------------------
+Run: slimfly_N722_D29 / ppp=200 / offered=0.0200
+Traffic: TRAFFIC_MODE=2 (2=hotspot), packets_per_event=10
+Hotspot: HOT_RATE_PERCENT=20%, HOTSPOT_COUNT=1, HOTSPOT_BASE=0
+Routing: ROUTE_LUT_MODE=1, PATH_DIVERSITY=1, LOAD_BALANCE=2, ROOT_SELECT=2, SEED=42
+Outputs: pathlog=results/slimfly_hotspot_latency/slimfly_N722_D29_hot20/ppp_200/pathlog.txt, summary_lut=results/slimfly_hotspot_latency/slimfly_N722_D29_hot20/ppp_200/summary_lut.txt
+Command: ./bin/main temp/slimfly_N722_D29.txt 2 1 42 200 10 2 1 2 results/slimfly_hotspot_latency/slimfly_N722_D29_hot20/ppp_200/pathlog.txt results/slimfly_hotspot_latency/slimfly_N722_D29_hot20/ppp_200/summary_lut.txt 1000
+----------------------------------------------------------------
+
+--------------------- Start of Rounte_Sim_Anytopo -------------------------
+**** Graph name is : temp/slimfly_N722_D29.txt
+**** Traffic Mode is : 2
+     seed = 42; ppp = 200/10000; packet_num = 10
+     traffic LUT file name is: (n/a)
+     hotspot config: hot_rate=20%, hotspot_count=1, hotspot_base=0
+     hotspot meaning: 20% traffic to fixed hotspot nodes, 80% uniform random
+**** Route Lut Mode is : 1
+**** Root selection mode is : 2
+**** Path Diversity mode is : 1
+**** Load Balance mode is : 2
+**** Num of VC is : 3
+**** Num of LUT is : 3
+**** Depth of Channel is : 3
+**** Path-log file name is : results/slimfly_hotspot_latency/slimfly_N722_D29_hot20/ppp_200/pathlog.txt
+----- start construct Graph AdjList from file, num_nodes = 722, degree = 29 -----
+Total Packets : 102810
+	 best root is : 379	 best root is : 17	 best root is : 678
+False dist rate is 0.435009
+False dist rate is 0.418529
+False dist rate is 0.433017
+--------------------- End of LUT INIT -------------------------
+Start ...
+Total cycle : 20320
+Throughput : 5.059547 packets/cycle
+End ...
+Using time = 147.594594 s
+**** Sim Done !
+Avg Packet Delivery Latency is : 2101.929472
+Max Packet Delivery Latency is : 20310
+temp/slimfly_N722_D29.txt

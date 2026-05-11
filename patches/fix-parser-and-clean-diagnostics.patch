@@ -1,0 +1,98 @@
+*** Begin Patch
+*** Update File: src/utils.c
+@@
+-    /* Diagnostic: dump initial bytes from file using fread to see raw content */
+-    {
+-        char tmpbuf[256];
+-        size_t rn = fread(tmpbuf, 1, sizeof(tmpbuf) - 1, f);
+-        tmpbuf[rn] = '\0';
+-        fprintf(stderr, "DIAG_FREAD_BYTES=%zu: %s\n", rn, tmpbuf);
+-        rewind(f);
+-        /* re-scan header after rewinding */
+-        scanned = fscanf(f, "%d,%d", &G->num_nodes, &G->degree);
+-    }
++    /* header read; continue with robust parsing */
+@@
+-    // read from file using robust fscanf to parse integers and separators
+-    int dst_node;
+-    int sep;
+-    for (int i = 0; i < G->num_nodes; ++i)
+-    {
+-        for (int j = 0; j < G->degree; ++j)
+-        {
+-            if (fscanf(f, " %d", &dst_node) != 1)
+-            {
+-                fprintf(stderr, "ERROR: failed to read dst node at row %d col %d\n", i, j);
+-                fclose(f);
+-                free(G->adj_list);
+-                free(G);
+-                return NULL;
+-            }
+-            G->adj_list[i][j] = (unsigned int)dst_node;
+-            if (j < G->degree - 1)
+-            {
+-                sep = fgetc(f);
+-                if (sep != ',')
+-                {
+-                    fprintf(stderr, "ERROR: expected comma after value at row %d col %d but got '%c'(%d)\n", i, j, sep, sep);
+-                }
+-            }
+-            else
+-            {
+-                // consume newline or EOF
+-                sep = fgetc(f);
+-                if (sep != '\n' && sep != EOF)
+-                {
+-                    // tolerate optional carriage return
+-                    if (sep == '\r') {
+-                        int nxt = fgetc(f);
+-                        if (nxt != '\n' && nxt != EOF) ungetc(nxt, f);
+-                    } else {
+-                        ungetc(sep, f);
+-                    }
+-                }
+-            }
+-        }
+-    }
++    // read from file using robust fscanf to parse integers and separators
++    int dst_node;
++    int sep;
++    for (int i = 0; i < G->num_nodes; ++i)
++    {
++        for (int j = 0; j < G->degree; ++j)
++        {
++            if (fscanf(f, " %d", &dst_node) != 1)
++            {
++                fprintf(stderr, "ERROR: failed to read dst node at row %d col %d\n", i, j);
++                fclose(f);
++                free(G->adj_list);
++                free(G);
++                return NULL;
++            }
++            G->adj_list[i][j] = (unsigned int)dst_node;
++            if (j < G->degree - 1)
++            {
++                sep = fgetc(f);
++                if (sep != ',')
++                {
++                    fprintf(stderr, "ERROR: expected comma after value at row %d col %d but got '%c'(%d)\n", i, j, sep, sep);
++                }
++            }
++            else
++            {
++                // consume newline or EOF
++                sep = fgetc(f);
++                if (sep != '\n' && sep != EOF)
++                {
++                    // tolerate optional carriage return
++                    if (sep == '\r') {
++                        int nxt = fgetc(f);
++                        if (nxt != '\n' && nxt != EOF) ungetc(nxt, f);
++                    } else {
++                        ungetc(sep, f);
++                    }
++                }
++            }
++        }
++    }
+*** End Patch

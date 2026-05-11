@@ -1,0 +1,21 @@
+N=338, deg=19
+max=1655760, min=760803, mean=964321.2219, median=936255.5000, std=147161.4532, q1=834445.5000, q3=1074932.5000
+top10_nodes,total
+1,1655760
+19,1299188
+2,1292817
+3,1279546
+18,1264162
+20,1257330
+25,1251747
+35,1244564
+13,1241471
+37,1233734
+Gini=0.085302
+
+--- Simulation Results ---
+Total Packets : 113906000
+Total cycle : 2176828
+Throughput : 52.326596 packets/cycle
+Avg Packet Delivery Latency is : 310.591679
+Max Packet Delivery Latency is : 534966

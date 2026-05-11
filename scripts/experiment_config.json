@@ -1,0 +1,28 @@
+{
+  "default_binary": "bin/main",
+  "default_vc": 8,
+  "default_ppp": 1000,
+  "default_packet_num": 1,
+  "arg_template": "{topo} 0 0 0 {ppp} {seed} 0 0 0 {pathlog} {traffic} {vc}",
+  "default_analyses": [
+    {
+      "script": "scripts/analyze_pathlog.py",
+      "inputs": ["{pathlog}"]
+    }
+  ],
+  "runs": [
+    {
+      "name": "example_small",
+      "topology": "temp/small_topo3.txt",
+      "ppp": 1000,
+      "seed": 0,
+      "vc": 8,
+      "analyses": [
+        {
+          "script": "scripts/analyze_pathlog.py",
+          "inputs": ["{pathlog}"]
+        }
+      ]
+    }
+  ]
+}

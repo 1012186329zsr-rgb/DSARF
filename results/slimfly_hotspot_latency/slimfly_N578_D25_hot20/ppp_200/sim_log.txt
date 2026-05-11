@@ -1,0 +1,40 @@
+----------------------------------------------------------------
+Run: slimfly_N578_D25 / ppp=200 / offered=0.0200
+Traffic: TRAFFIC_MODE=2 (2=hotspot), packets_per_event=10
+Hotspot: HOT_RATE_PERCENT=20%, HOTSPOT_COUNT=1, HOTSPOT_BASE=0
+Routing: ROUTE_LUT_MODE=1, PATH_DIVERSITY=1, LOAD_BALANCE=2, ROOT_SELECT=2, SEED=42
+Outputs: pathlog=results/slimfly_hotspot_latency/slimfly_N578_D25_hot20/ppp_200/pathlog.txt, summary_lut=results/slimfly_hotspot_latency/slimfly_N578_D25_hot20/ppp_200/summary_lut.txt
+Command: ./bin/main temp/slimfly_N578_D25.txt 2 1 42 200 10 2 1 2 results/slimfly_hotspot_latency/slimfly_N578_D25_hot20/ppp_200/pathlog.txt results/slimfly_hotspot_latency/slimfly_N578_D25_hot20/ppp_200/summary_lut.txt 1000
+----------------------------------------------------------------
+
+--------------------- Start of Rounte_Sim_Anytopo -------------------------
+**** Graph name is : temp/slimfly_N578_D25.txt
+**** Traffic Mode is : 2
+     seed = 42; ppp = 200/10000; packet_num = 10
+     traffic LUT file name is: (n/a)
+     hotspot config: hot_rate=20%, hotspot_count=1, hotspot_base=0
+     hotspot meaning: 20% traffic to fixed hotspot nodes, 80% uniform random
+**** Route Lut Mode is : 1
+**** Root selection mode is : 2
+**** Path Diversity mode is : 1
+**** Load Balance mode is : 2
+**** Num of VC is : 3
+**** Num of LUT is : 3
+**** Depth of Channel is : 3
+**** Path-log file name is : results/slimfly_hotspot_latency/slimfly_N578_D25_hot20/ppp_200/pathlog.txt
+----- start construct Graph AdjList from file, num_nodes = 578, degree = 25 -----
+Total Packets : 65230
+	 best root is : 16	 best root is : 306	 best root is : 0
+False dist rate is 0.422877
+False dist rate is 0.462566
+False dist rate is 0.422877
+--------------------- End of LUT INIT -------------------------
+Start ...
+Total cycle : 12684
+Throughput : 5.142699 packets/cycle
+End ...
+Using time = 74.193316 s
+**** Sim Done !
+Avg Packet Delivery Latency is : 648.245363
+Max Packet Delivery Latency is : 12681
+temp/slimfly_N578_D25.txt

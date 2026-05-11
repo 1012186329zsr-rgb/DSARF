@@ -1,0 +1,9 @@
+topology,N,knee_ppp_95pct_throughput,knee_ppp_latency_geometry,status
+slimfly_N50_D7,50,200,500,ok
+slimfly_N98_D11,98,200,500,ok
+slimfly_N242_D17,242,200,500,ok
+slimfly_N338_D19,338,200,500,ok
+slimfly_N578_D25,578,200,500,ok
+slimfly_N722_D29,722,200,500,ok
+slimfly_N1058_D35,1058,200,500,ok
+slimfly_N1682_D43,1682,200,,insufficient_points

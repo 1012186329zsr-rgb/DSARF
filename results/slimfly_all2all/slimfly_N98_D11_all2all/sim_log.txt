@@ -1,0 +1,37 @@
+----------------------------------------------------------------
+Run: slimfly_N98_D11
+Traffic: TRAFFIC_MODE=1 (all-to-all if =1), packets_per_pair=1000
+Note: ppp=1000 and traffic_num=1000 are ignored in all-to-all mode (kept for CLI compatibility).
+Routing: ROUTE_LUT_MODE=4, PATH_DIVERSITY=2, LOAD_BALANCE=1
+Note: ROOT_SELECT=0 only matters for Tree-turn (route_lut_mode=1).
+Seed: 0
+Outputs: pathlog=results/slimfly_all2all/slimfly_N98_D11_all2all/pathlog.txt, summary_lut=results/slimfly_all2all/slimfly_N98_D11_all2all/summary_lut.txt
+Command: ./bin/main temp/slimfly_N98_D11.txt 1 4 0 1000 1000 0 2 1 results/slimfly_all2all/slimfly_N98_D11_all2all/pathlog.txt results/slimfly_all2all/slimfly_N98_D11_all2all/summary_lut.txt 1000
+----------------------------------------------------------------
+
+--------------------- Start of Rounte_Sim_Anytopo -------------------------
+**** Graph name is : temp/slimfly_N98_D11.txt
+**** Traffic Mode is : 1
+     seed = 0; ppp = 1000/10000; packet_num = 1000
+     traffic LUT file name is: (n/a)
+**** Route Lut Mode is : 4
+**** Root selection mode is : 0
+**** Path Diversity mode is : 2
+**** Load Balance mode is : 1
+**** Num of VC is : 3
+**** Num of LUT is : 3
+**** Depth of Channel is : 3
+**** Path-log file name is : results/slimfly_all2all/slimfly_N98_D11_all2all/pathlog.txt
+----- start construct Graph AdjList from file, num_nodes = 98, degree = 11 -----
+Total Packets : 9506000
+Initializing LUT with Weighted Constrained Routing (Hop <= 3)...
+Weighted Constrained Routing Init Done.
+Start ...
+Total cycle : 522606
+Throughput : 18.189611 packets/cycle
+End ...
+Using time = 408.673057 s
+**** Sim Done !
+Avg Packet Delivery Latency is : 143.132763
+Max Packet Delivery Latency is : 146917
+temp/slimfly_N98_D11.txt
