@@ -1,0 +1,10 @@
+temp/
+*.o
+build/
+bin/
+obj/
+*.json
+__pycache__
+topology_*.zip
+# Experiment results
+results/

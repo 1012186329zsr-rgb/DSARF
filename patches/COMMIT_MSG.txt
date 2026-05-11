@@ -1,0 +1,7 @@
+fix(parser): robust topology parsing and remove debug dumps
+
+- Replace fragile fgets+strtok parsing with fscanf-based integer parsing in src/utils.c
+- Remove temporary raw-file and adjacency debug prints used during diagnosis
+- Keep defensive DIAG ERROR checks in construct_router_list_from_graphadjlist to catch invalid partners/ports
+
+This fixes a crash caused by improperly parsed adjacency lists (rows filled with zeros) and stabilizes the simulator for small topology inputs.

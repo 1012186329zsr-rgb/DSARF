@@ -38,47 +38,44 @@ GraphAdjList *construct_graph_adjlist_from_file(char *file_name)
         assert(G->adj_list[i] != NULL);
     }
 
-    // read from file using robust fscanf to parse integers and separators
-    int dst_node;
-    int sep;
+    // read from file using line-based parsing
+    char *line = NULL;
+    size_t len = 0;
+    ssize_t read;
+    
+    // Consume the newline after the header
+    char c;
+    while ((c = fgetc(f)) != '\n' && c != EOF);
+
     for (int i = 0; i < G->num_nodes; ++i)
     {
-        for (int j = 0; j < G->degree; ++j)
-        {
-            if (fscanf(f, " %d", &dst_node) != 1)
-            {
-                fprintf(stderr, "ERROR: failed to read dst node at row %d col %d\n", i, j);
-                fclose(f);
-                free(G->adj_list);
-                free(G);
-                return NULL;
-            }
-            G->adj_list[i][j] = (unsigned int)dst_node;
-            if (j < G->degree - 1)
-            {
-                sep = fgetc(f);
-                if (sep != ',')
-                {
-                    fprintf(stderr, "ERROR: expected comma after value at row %d col %d but got '%c'(%d)\n", i, j, sep, sep);
-                }
-            }
-            else
-            {
-                // consume newline or EOF
-                sep = fgetc(f);
-                if (sep != '\n' && sep != EOF)
-                {
-                    // tolerate optional carriage return
-                    if (sep == '\r') {
-                        int nxt = fgetc(f);
-                        if (nxt != '\n' && nxt != EOF) ungetc(nxt, f);
-                    } else {
-                        ungetc(sep, f);
-                    }
-                }
-            }
+        read = getline(&line, &len, f);
+        if (read == -1) {
+            fprintf(stderr, "ERROR: failed to read line for node %d\n", i);
+            break;
+        }
+        
+        char *ptr = line;
+        int count = 0;
+        int val;
+        int offset;
+        
+        while (count < G->degree && sscanf(ptr, "%d%n", &val, &offset) == 1) {
+            G->adj_list[i][count] = (unsigned int)val;
+            count++;
+            ptr += offset;
+            // Skip delimiter
+            while (*ptr == ',' || *ptr == ' ' || *ptr == '\t') ptr++;
+        }
+        
+        // Fill remaining with INF
+        while (count < G->degree) {
+            G->adj_list[i][count] = INF;
+            count++;
         }
     }
+    
+    if (line) free(line);
     fclose(f);
     f = NULL;
     return G;
@@ -113,15 +110,15 @@ void write_graph_adjlist_to_file(GraphAdjList *G, char *file_name)
     f = NULL;
 }
 
-void write_path_log_to_file(const GraphAdjList *G, unsigned int **path_log, char *file_name)
+void write_path_log_to_file(const GraphAdjList *G, unsigned int *path_log, char *file_name)
 {
     FILE *f = fopen(file_name, "w");
     assert(fprintf(f, "%d,%d\n", G->num_nodes, G->degree) >= 0);
     for (int i = 0; i < G->num_nodes; ++i)
     {
         for (int j = 0; j < G->degree - 1; ++j)
-            assert(fprintf(f, "%d,", path_log[i][j]) >= 0);
-        assert(fprintf(f, "%d\n", path_log[i][G->degree - 1]) >= 0);
+            assert(fprintf(f, "%d,", path_log[i * G->degree + j]) >= 0);
+        assert(fprintf(f, "%d\n", path_log[i * G->degree + G->degree - 1]) >= 0);
     }
     fclose(f);
     f = NULL;

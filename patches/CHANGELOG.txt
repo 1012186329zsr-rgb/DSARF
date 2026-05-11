@@ -1,0 +1,25 @@
+Changelog - fix-parser-and-clean-diagnostics
+
+Summary:
+- Fix fragile topology-file parsing in `src/utils.c` by replacing fgets+strtok approach with a robust integer-based parser using `fscanf` + explicit separator handling.
+- Remove temporary diagnostic raw-dump prints (fread/hex/raw-line prints) used during debugging.
+- Remove large adjacency stderr dump from `src/route_sim_anytopo.c` while keeping defensive DIAG ERROR checks for invalid partner/port.
+
+Why:
+- The old parsing occasionally returned empty lines (fgets+strtok produced no tokens), resulting in adj_list rows filled with zeros. That caused reciprocal-port lookup failures and segfaults during router-list construction.
+
+Impact:
+- Parser is more robust to whitespace and separators. The simulator runs the small smoke test successfully and no longer segfaults for the previously failing topology.
+
+Notes:
+- Temporary diagnostic prints were removed; if you want a debug-mode, we can reintroduce them behind a CLI flag.
+- This patch only affects the `topology-master-vc3` copy; original repo remains untouched.
+
+Files changed (high level):
+- src/utils.c
+- src/route_sim_anytopo.c
+
+How to test:
+1) Build: `cd build && cmake --build . --target all -j 4`
+2) Run a smoke test: `./topology /tmp/small_topo3.txt 0 0 0 1000 1 0 0 0 /tmp/pathlog.txt /tmp/traffic.csv 8`
+
