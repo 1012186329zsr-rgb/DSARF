@@ -1,4 +1,0 @@
-ppp,offered_traffic,avg_latency,total_cycle,throughput,total_packets,hot_rate_percent,hotspot_count,hotspot_base,topology
-200,0.0200,391.564172,4211,5.236286,22050,20,1,0,slimfly_N338_D19
-500,0.0500,998.831041,11032,5.113307,56410,20,1,0,slimfly_N338_D19
-1000,0.1000,1485.045299,22152,5.099314,112960,20,1,0,slimfly_N338_D19

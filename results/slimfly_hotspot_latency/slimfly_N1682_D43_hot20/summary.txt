@@ -1,8 +1,0 @@
-Hotspot latency sweep summary
-topology=slimfly_N1682_D43, traffic_mode=2, route_lut_mode=1, path_diversity=1, load_balance=2, seed=42
-hot_rate_percent=20, hotspot_count=1, hotspot_base=0, packets_num=10
-
-ppp,offered_traffic,avg_latency,total_cycle,throughput,total_packets
-200,0.0200,13144.591820,112421,5.010719,563310
-500,0.0500,25561.025706,285151,4.972453,1417900
-1000,0.1000,33429.794785,567172,4.983356,2826420
